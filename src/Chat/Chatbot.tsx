@@ -1,35 +1,12 @@
-import React, { useState, FormEvent } from "react";
+import React from "react";
 import botIcon from "./imgs/furiaLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { styles } from "./style";
-import { getBotResponse } from "./hooks/getBotResponse";
-
-type Sender = "user" | "bot";
-
-interface Message {
-  sender: Sender;
-  text: string;
-}
+import { useSubmit } from "./hooks/useSubmit";
 
 const Chatbot: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      sender: "bot",
-      text: "Olá, eu sou o bot da FURIA! Pergunte-me sobre próximo jogo, último jogo, jogadores…",
-    },
-  ]);
-  const [input, setInput] = useState<string>("");
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    setMessages((m) => [...m, { sender: "user", text: input }]);
-    setInput("");
-    const botText = await getBotResponse(input);
-    setMessages((m) => [...m, { sender: "bot", text: botText }]);
-  };
+  const { handleSubmit, input, messages, setInput } = useSubmit();
 
   return (
     <div style={styles.container}>
