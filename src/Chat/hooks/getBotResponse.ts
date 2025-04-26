@@ -1,14 +1,22 @@
-import { getMatches } from "./getMatches";
+import { Match } from "../../types/matches";
 import { getWikiSummary } from "./getWikiSummary";
+import { useFormatMatches } from "./useFormatMatches";
 
-const cannedResponses: { [key: string]: string } = {
-  "próximo jogo":
-    "O próximo jogo da FURIA será em 10/07/2024 contra a Team Liquid, às 15h (BRT).",
-  "último jogo":
-    "No último confronto, a FURIA venceu a G2 por 2-1 na BLAST Premier Spring.",
-  jogadores: "O roster atual da FURIA é: arT, KSCERATO, yuurih, drop e baitz.",
-  treinador: "O atual treinador da FURIA é André “drop” Abreu.",
-  site: "Você pode acompanhar notícias e calendários em https://furia.gg/",
+const inputWik = (input: string) => {
+  return (
+    input.includes("wikipedia") ||
+    input.includes("história") ||
+    input.includes("info geral")
+  );
+};
+const inputGames = (input: string) => {
+  return (
+    input.includes("jogos") ||
+    input.includes("últimos jogos") ||
+    input.includes("resultado") ||
+    input.includes("resultados") ||
+    input.includes("partidas")
+  );
 };
 
 export const getBotResponse = async (
@@ -16,19 +24,25 @@ export const getBotResponse = async (
   delay: (ms?: number) => Promise<unknown>
 ): Promise<string> => {
   await delay(300 + Math.random() * 700);
-  const q = question.toLowerCase();
 
-  if (
-    q.includes("wikipedia") ||
-    q.includes("história") ||
-    q.includes("info geral")
-  ) {
+  const input = question.toLowerCase();
+  const {
+    extractDates,
+    filterByPeriod,
+    formatMatches,
+    filterByDate,
+    lastNMatches,
+  } = useFormatMatches();
+
+  console.log(`input: ${input}`);
+
+  if (inputWik(input)) {
     // retorna o summary da Wiki
     const resumo = await getWikiSummary();
     return `📖 Resumo da Wikipedia:\n${resumo}`;
   }
 
-  if (q.includes("treinador")) {
+  if (input.includes("treinador")) {
     // hoje sabemos que o técnico é André “drop” Abreu, mas podemos buscar na Wiki
     const resumo = await getWikiSummary();
     // tentamos extrair a frase “Treinador: X” do resumo
@@ -37,31 +51,38 @@ export const getBotResponse = async (
     return `👨‍🏫 O treinador atual da FURIA é: ${coach}.`;
   }
 
-  if (
-    q.includes("jogos") ||
-    q.includes("últimos jogos") ||
-    q.includes("resultados")
-  ) {
-    // busca na draft5
-    try {
-      const jogosDraft = await getMatches();
-      return jogosDraft;
-    } catch (e) {
-      console.error(e);
-      return "⚠️ Não consegui recuperar resultados do Draft5 no momento.";
+  if (inputGames(input)) {
+    const dates = extractDates(input);
+    let matches: Match[];
+
+    if (dates.length >= 2) {
+      // período de duas datas
+      matches = filterByPeriod(dates[0], dates[1]);
+      return `📅 Partidas de ${dates[0]} até ${dates[1]}:\n${formatMatches(
+        matches
+      )}`;
     }
+
+    if (dates.length === 1) {
+      // filtrou por data única
+      matches = filterByDate(dates[0]);
+      return `📅 Partidas em ${dates[0]}:\n${formatMatches(matches)}`;
+    }
+
+    matches = lastNMatches(4);
+    return `📅 Últimos 4 jogos:\n${formatMatches(matches)}`;
   }
 
-  if (q.includes("próximo jogo")) {
+  if (input.includes("próximo jogo")) {
     // site oficial da FURIA tem calendário, mas sem API pública:
     return (
       "📅 Próximo jogo:\n" +
-      "FURIA vs Team Liquid – IEM Rio Major – 10/07/2024 às 15h (BRT).\n" +
+      "FURIA vs Loud – IEM Rio Major – 10/07/2024 às 15h (BRT).\n" +
       "📌 Local: Jeunesse Arena, Rio de Janeiro."
     );
   }
 
-  if (q.includes("jogadores") || q.includes("roster")) {
+  if (input.includes("jogadores") || input.includes("roster")) {
     // você pode também extrair do JSON da Wiki via API: prop=pageprops ou scrap infobox
     return (
       "🎮 Roster atual de CS:GO:\n" +
@@ -74,7 +95,7 @@ export const getBotResponse = async (
     );
   }
 
-  if (q.includes("site") || q.includes("link")) {
+  if (input.includes("site") || input.includes("link")) {
     return "🌐 Site oficial da FURIA: https://furia.gg/";
   }
 

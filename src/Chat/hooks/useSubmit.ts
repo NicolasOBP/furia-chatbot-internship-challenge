@@ -4,6 +4,12 @@ import { getBotResponse } from "./getBotResponse";
 
 const delay = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
+function swapDateDMtoMD(text: string): string {
+  return text.replace(/\b(\d{2})\/(\d{2})\b/g, (_match, dd, mm) => {
+    return `${mm}/${dd}`;
+  });
+}
+
 export const useSubmit = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -19,10 +25,12 @@ export const useSubmit = () => {
     if (!input.trim()) return;
 
     setMessages((m) => [...m, { sender: "user", text: input }]);
-    setInput("");
 
+    const transformed = swapDateDMtoMD(input);
+
+    setInput("");
     setIsTyping(true);
-    const botText = await getBotResponse(input, delay);
+    const botText = await getBotResponse(transformed, delay);
     setIsTyping(false);
 
     setMessages((m) => [...m, { sender: "bot", text: botText }]);

@@ -43,9 +43,11 @@ export const styles: Record<string, React.CSSProperties> = {
     fontSize: 14,
     lineHeight: 1.4,
     wordBreak: "break-word",
+    whiteSpace: "pre-wrap",
   },
   text: {
     color: "#fff",
+    whiteSpace: "pre-wrap",
   },
   form: {
     display: "flex",

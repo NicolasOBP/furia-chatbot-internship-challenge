@@ -1,5 +1,4 @@
-import React from "react";
-import "./index.css"; // garante height:100% no root
+import "./index.css";
 import Chatbot from "./Chat/Chatbot";
 
 function App() {

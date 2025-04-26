@@ -1,0 +1,214 @@
+{
+  "matches": [
+    {
+      "date": "04/21",
+      "time": "14:55",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "LOUD",
+        "team2": "FURIA"
+      },
+      "score": "1-0"
+    },
+    {
+      "date": "04/20",
+      "time": "15:35",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Vivo Keyd Stars"
+      },
+      "score": "1-0"
+    },
+    {
+      "date": "04/19",
+      "time": "13:00",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "RED Canids"
+      },
+      "score": "1-0"
+    },
+    {
+      "date": "04/18",
+      "time": "21:00",
+      "tournament": "VALORANT - VCT Americas",
+      "teams": {
+        "team1": "MIBR",
+        "team2": "FURIA"
+      },
+      "score": "13-8"
+    },
+    {
+      "date": "04/13",
+      "time": "15:45",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "Fluxo W7M",
+        "team2": "FURIA"
+      },
+      "score": "0-1"
+    },
+    {
+      "date": "04/12",
+      "time": "18:00",
+      "tournament": "VALORANT - VCT Americas",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Cloud9"
+      },
+      "score": "1-13"
+    },
+    {
+      "date": "04/12",
+      "time": "15:45",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "paiN Gaming",
+        "team2": "FURIA"
+      },
+      "score": "0-1"
+    },
+    {
+      "date": "04/09",
+      "time": "09:50",
+      "tournament": "CS2 - PGL Bucharest",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "The MongoLZ"
+      },
+      "score": "0-2"
+    },
+    {
+      "date": "04/08",
+      "time": "06:05",
+      "tournament": "CS2 - PGL Bucharest",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Virtus Pro"
+      },
+      "score": "0-2"
+    },
+    {
+      "date": "04/07",
+      "time": "11:05",
+      "tournament": "CS2 - PGL Bucharest",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Complexity"
+      },
+      "score": "1-2"
+    },
+    {
+      "date": "04/06",
+      "time": "18:00",
+      "tournament": "VALORANT - VCT Americas",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Leviatan"
+      },
+      "score": "5-13"
+    },
+    {
+      "date": "04/06",
+      "time": "13:00",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Isurus Estral"
+      },
+      "score": "1-0"
+    },
+    {
+      "date": "04/06",
+      "time": "12:35",
+      "tournament": "CS2 - PGL Bucharest",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Apogee"
+      },
+      "score": "2-0"
+    },
+    {
+      "date": "04/05",
+      "time": "14:00",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "Leviatan",
+        "team2": "FURIA"
+      },
+      "score": "1-0"
+    },
+    {
+      "date": "03/30",
+      "time": "13:30",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "Karmine Corp",
+        "team2": "FURIA"
+      },
+      "score": "4-0"
+    },
+    {
+      "date": "03/30",
+      "time": "11:15",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "Team Vitality",
+        "team2": "FURIA"
+      },
+      "score": "3-4"
+    },
+    {
+      "date": "03/29",
+      "time": "11:00",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Twisted Minds"
+      },
+      "score": "4-1"
+    },
+    {
+      "date": "03/28",
+      "time": "18:00",
+      "tournament": "VALORANT - VCT Americas",
+      "teams": {
+        "team1": "NRG",
+        "team2": "FURIA"
+      },
+      "score": "2-1"
+    },
+    {
+      "date": "03/28",
+      "time": "16:00",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Dignitas"
+      },
+      "score": "3-1"
+    },
+    {
+      "date": "03/28",
+      "time": "12:00",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Complexity Gaming"
+      },
+      "score": "3-2"
+    },
+    {
+      "date": "03/27",
+      "time": "15:15",
+      "tournament": "Rocket League - RLCS Major",
+      "teams": {
+        "team1": "Team Vitality",
+        "team2": "FURIA"
+      },
+      "score": "3-0"
+    }
+  ]
+}
