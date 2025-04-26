@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { styles } from "./style";
 import { useSubmit } from "./hooks/useSubmit";
 import { ChatIcon } from "./Components/ChatIcon";
@@ -6,6 +6,14 @@ import { TypingAnimation } from "./Components/TypingAnimation";
 
 const Chatbot: React.FC = () => {
   const { handleSubmit, input, messages, setInput, isTyping } = useSubmit();
+
+  const chatWindowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = chatWindowRef.current;
+    if (!el) return;
+    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div style={styles.container}>
