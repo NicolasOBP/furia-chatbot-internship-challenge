@@ -19,7 +19,7 @@ const inputGames = (input: string) => {
   );
 };
 
-export const getBotResponse = async (
+export const useBotResponse = async (
   question: string,
   delay: (ms?: number) => Promise<unknown>
 ): Promise<string> => {
@@ -34,18 +34,14 @@ export const getBotResponse = async (
     lastNMatches,
   } = useFormatMatches();
 
-  console.log(`input: ${input}`);
-
   if (inputWik(input)) {
-    // retorna o summary da Wiki
     const resumo = await getWikiSummary();
     return `📖 Resumo da Wikipedia:\n${resumo}`;
   }
 
   if (input.includes("treinador")) {
-    // hoje sabemos que o técnico é André “drop” Abreu, mas podemos buscar na Wiki
     const resumo = await getWikiSummary();
-    // tentamos extrair a frase “Treinador: X” do resumo
+
     const match = resumo.match(/treinador[s]?:?\s*([^.,;]+)/i);
     const coach = match ? match[1].trim() : "André “drop” Abreu";
     return `👨‍🏫 O treinador atual da FURIA é: ${coach}.`;
@@ -56,7 +52,6 @@ export const getBotResponse = async (
     let matches: Match[];
 
     if (dates.length >= 2) {
-      // período de duas datas
       matches = filterByPeriod(dates[0], dates[1]);
       return `📅 Partidas de ${dates[0]} até ${dates[1]}:\n${formatMatches(
         matches
@@ -64,7 +59,6 @@ export const getBotResponse = async (
     }
 
     if (dates.length === 1) {
-      // filtrou por data única
       matches = filterByDate(dates[0]);
       return `📅 Partidas em ${dates[0]}:\n${formatMatches(matches)}`;
     }
@@ -74,7 +68,6 @@ export const getBotResponse = async (
   }
 
   if (input.includes("próximo jogo")) {
-    // site oficial da FURIA tem calendário, mas sem API pública:
     return (
       "📅 Próximo jogo:\n" +
       "FURIA vs Loud – IEM Rio Major – 10/07/2024 às 15h (BRT).\n" +
@@ -83,7 +76,6 @@ export const getBotResponse = async (
   }
 
   if (input.includes("jogadores") || input.includes("roster")) {
-    // você pode também extrair do JSON da Wiki via API: prop=pageprops ou scrap infobox
     return (
       "🎮 Roster atual de CS:GO:\n" +
       "• arT\n" +

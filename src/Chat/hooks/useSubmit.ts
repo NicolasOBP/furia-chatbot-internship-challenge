@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { Message } from "../../types/chat";
-import { getBotResponse } from "./getBotResponse";
+import { useBotResponse } from "./useBotResponse";
 
 const delay = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
@@ -20,7 +20,7 @@ export const useSubmit = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [input, setInput] = useState<string>("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const useHandleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
@@ -30,11 +30,11 @@ export const useSubmit = () => {
 
     setInput("");
     setIsTyping(true);
-    const botText = await getBotResponse(transformed, delay);
+    const botText = await useBotResponse(transformed, delay);
     setIsTyping(false);
 
     setMessages((m) => [...m, { sender: "bot", text: botText }]);
   };
 
-  return { handleSubmit, messages, input, setInput, isTyping };
+  return { useHandleSubmit, messages, input, setInput, isTyping };
 };

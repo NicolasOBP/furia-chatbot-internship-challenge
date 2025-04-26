@@ -5,7 +5,7 @@ import { ChatIcon } from "./Components/ChatIcon";
 import { TypingAnimation } from "./Components/TypingAnimation";
 
 const Chatbot: React.FC = () => {
-  const { handleSubmit, input, messages, setInput, isTyping } = useSubmit();
+  const { useHandleSubmit, input, messages, setInput, isTyping } = useSubmit();
 
   const chatWindowRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +20,7 @@ const Chatbot: React.FC = () => {
       <header style={styles.header}>
         <h1 style={styles.title}>FURIA Fanbot</h1>
       </header>
-      <main style={styles.chatWindow}>
+      <main style={styles.chatWindow} ref={chatWindowRef}>
         {messages.map((m, i) => {
           const isUser = m.sender === "user";
           return (
@@ -49,7 +49,7 @@ const Chatbot: React.FC = () => {
 
         <TypingAnimation isTyping={isTyping} />
       </main>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={useHandleSubmit} style={styles.form}>
         <input
           style={styles.input}
           value={input}
