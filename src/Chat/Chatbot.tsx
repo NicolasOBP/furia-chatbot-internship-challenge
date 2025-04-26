@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { styles } from "./style";
 import { useSubmit } from "./hooks/useSubmit";
+import { ChatIcon } from "./Components/ChatIcon";
 
 const Chatbot: React.FC = () => {
   const { handleSubmit, input, messages, setInput } = useSubmit();
@@ -24,7 +25,8 @@ const Chatbot: React.FC = () => {
                 justifyContent: isUser ? "flex-end" : "flex-start",
               }}
             >
-              {!isUser && <img src={botIcon} style={styles.icon} alt="bot" />}
+              <ChatIcon isUser={isUser} position="left" />
+
               <div
                 style={{
                   ...styles.bubble,
@@ -33,14 +35,8 @@ const Chatbot: React.FC = () => {
               >
                 <span style={styles.text}>{m.text}</span>
               </div>
-              {isUser && (
-                <FontAwesomeIcon
-                  icon={faUser}
-                  size="2x"
-                  color="#fff"
-                  style={{ marginLeft: 8 }}
-                />
-              )}
+
+              <ChatIcon isUser={isUser} position="right" />
             </div>
           );
         })}
