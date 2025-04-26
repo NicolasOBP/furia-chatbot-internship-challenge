@@ -1,13 +1,11 @@
 import React from "react";
-import botIcon from "./imgs/furiaLogo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { styles } from "./style";
 import { useSubmit } from "./hooks/useSubmit";
 import { ChatIcon } from "./Components/ChatIcon";
+import { TypingAnimation } from "./Components/TypingAnimation";
 
 const Chatbot: React.FC = () => {
-  const { handleSubmit, input, messages, setInput } = useSubmit();
+  const { handleSubmit, input, messages, setInput, isTyping } = useSubmit();
 
   return (
     <div style={styles.container}>
@@ -40,6 +38,8 @@ const Chatbot: React.FC = () => {
             </div>
           );
         })}
+
+        <TypingAnimation isTyping={isTyping} />
       </main>
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
