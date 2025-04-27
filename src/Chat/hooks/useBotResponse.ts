@@ -43,7 +43,7 @@ export const useBotResponse = async (
   }
 
   if (input.includes("tchau") || input.includes("até mais")) {
-    response += "👋 Tchau! Até mais! Se precisar de algo mais é so perguntar";
+    response += "👋 Tchau! Até mais! Se precisar de algo mais é so perguntar\n";
   }
 
   if (
@@ -58,7 +58,7 @@ export const useBotResponse = async (
 
   if (inputWik(input)) {
     const resumo = await getWikiSummary();
-    response += `📖 Resumo da Wikipedia:\n${resumo}\n`;
+    response += `📖 ${resumo}\n`;
   }
 
   if (input.includes("treinador")) {
@@ -98,10 +98,10 @@ export const useBotResponse = async (
   if (input.includes("próximo jogo")) {
     const nextMatch = nextMatches;
 
-    response += `📅 Próximo jogo:\n
+    response += `📅 Próximo jogo:
     ${nextMatch.matches[0].teams.team1} vs ${nextMatch.matches[0].teams.team2} – 
-    ${nextMatch.matches[0].tournament} – ${nextMatch.matches[0].date} às 
-    ${nextMatch.matches[0].time}.\n`;
+    ${nextMatch.matches[0].tournament} – 
+    ${nextMatch.matches[0].date} às ${nextMatch.matches[0].time}.\n`;
   }
 
   if (input.includes("jogadores") || input.includes("roster")) {
@@ -123,7 +123,6 @@ export const useBotResponse = async (
   ) {
     response +=
       "🌐 Site oficial da FURIA: https://furia.gg/\n" +
-      "⠀\n" +
       "📱 Redes sociais:\n" +
       "• Twitter: https://twitter.com/FURIA\n" +
       "• Instagram: https://www.instagram.com/furia/\n" +
