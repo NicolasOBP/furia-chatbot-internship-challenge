@@ -20,7 +20,7 @@ export const useSubmit = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [input, setInput] = useState<string>("");
 
-  const handleBotResponse = async (transformedInput: string) => {
+  const HandleBotResponse = async (transformedInput: string) => {
     setIsTyping(true);
     const botText = await useBotResponse(transformedInput, delay);
     setIsTyping(false);
@@ -40,7 +40,7 @@ export const useSubmit = () => {
     const transformed = swapDateDMtoMD(input);
 
     setInput("");
-    await handleBotResponse(transformed);
+    await HandleBotResponse(transformed);
   };
 
   return { useHandleSubmit, messages, input, setInput, isTyping };
