@@ -42,10 +42,6 @@ export const useBotResponse = async (
       "👋 Olá! Como posso ajudar? Se quiser saber o que posso fazer é só perguntar!!\n";
   }
 
-  if (input.includes("tchau") || input.includes("até mais")) {
-    response += "👋 Tchau! Até mais! Se precisar de algo mais é so perguntar\n";
-  }
-
   if (
     input.includes("fazer") ||
     input.includes("pode") ||
@@ -130,6 +126,10 @@ export const useBotResponse = async (
       "• TikTok: https://www.tiktok.com/@furiaesports\n" +
       "• Twitch: https://www.twitch.tv/furia\n" +
       "• YouTube: https://www.youtube.com/c/FURIAEsports";
+  }
+
+  if (input.includes("tchau") || input.includes("até mais")) {
+    response += "👋 Tchau! Até mais! Se precisar de algo mais é so perguntar\n";
   }
 
   if (response === "") {
