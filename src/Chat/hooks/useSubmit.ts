@@ -20,20 +20,27 @@ export const useSubmit = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [input, setInput] = useState<string>("");
 
+  const handleBotResponse = async (transformedInput: string) => {
+    setIsTyping(true);
+    const botText = await useBotResponse(transformedInput, delay);
+    setIsTyping(false);
+
+    setMessages((m) => [...m, { sender: "bot", text: botText }]);
+  };
+
   const useHandleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+
+    if (!input.trim()) {
+      return;
+    }
 
     setMessages((m) => [...m, { sender: "user", text: input }]);
 
     const transformed = swapDateDMtoMD(input);
 
     setInput("");
-    setIsTyping(true);
-    const botText = await useBotResponse(transformed, delay);
-    setIsTyping(false);
-
-    setMessages((m) => [...m, { sender: "bot", text: botText }]);
+    await handleBotResponse(transformed);
   };
 
   return { useHandleSubmit, messages, input, setInput, isTyping };
