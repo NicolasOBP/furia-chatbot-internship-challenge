@@ -125,7 +125,7 @@ export const useBotResponse = async (
       "• Facebook: https://www.facebook.com/FURIAesports/\n" +
       "• TikTok: https://www.tiktok.com/@furiaesports\n" +
       "• Twitch: https://www.twitch.tv/furia\n" +
-      "• YouTube: https://www.youtube.com/c/FURIAEsports";
+      "• YouTube: https://www.youtube.com/c/FURIAEsports\n";
   }
 
   if (input.includes("tchau") || input.includes("até mais")) {
