@@ -12,7 +12,6 @@ const inputWik = (input: string) => {
 };
 const inputGames = (input: string) => {
   return (
-    input.includes("jogos") ||
     input.includes("últimos jogos") ||
     input.includes("resultado") ||
     input.includes("resultados") ||
@@ -91,13 +90,16 @@ export const useBotResponse = async (
     }
   }
 
-  if (input.includes("próximo jogo")) {
+  if (input.includes("próximo jogo") || input.includes("próximos jogos")) {
     const nextMatch = nextMatches;
 
-    response += `📅 Próximo jogo:
-    ${nextMatch.matches[0].teams.team1} vs ${nextMatch.matches[0].teams.team2} – 
-    ${nextMatch.matches[0].tournament} – 
-    ${nextMatch.matches[0].date} às ${nextMatch.matches[0].time}.\n`;
+    response += "📅 Próximo jogo:\n";
+
+    nextMatch.matches.forEach((match) => {
+      response += `${match.teams.team1} vs ${match.teams.team2} – 
+    ${match.tournament} – 
+    ${match.date} às ${match.time}.\n`;
+    });
   }
 
   if (input.includes("jogadores") || input.includes("roster")) {

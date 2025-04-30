@@ -1,12 +1,21 @@
 {
   "matches": [
     {
-      "date": "04/27",
+      "date": "05/03",
       "time": "15:00",
       "tournament": "LOL - LTA South Split 2",
       "teams": {
         "team1": "FURIA",
-        "team2": "LOUD"
+        "team2": "RED Canids"
+      }
+    },
+    {
+      "date": "05/11",
+      "time": "12:00",
+      "tournament": "LOL - LTA South Split 2",
+      "teams": {
+        "team1": "FURIA",
+        "team2": "Fluxo W7M"
       }
     }
   ]
